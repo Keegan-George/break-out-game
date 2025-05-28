@@ -1,5 +1,5 @@
 from turtle import Turtle
-from config import PaddleConfig
+from config import PaddleConfig, ScreenConfig, DEFAULT_TURTLE_SIZE
 
 
 class Paddle(Turtle):
@@ -11,14 +11,21 @@ class Paddle(Turtle):
         self.penup()
         self.goto(PaddleConfig.starting_position())
 
-    def move_left(self):
+    def move(self, direction: str):
         """
-        Moves the paddle to the left.
+        Move the paddle left or right accordingly based on the direction passed.
+        Prevents the paddle from going out of bounds.
         """
-        self.goto(self.xcor() - PaddleConfig.MOVE_DISTANCE, self.ycor())
+        direction_map = {
+            "left": -PaddleConfig.MOVE_OFFSET,
+            "right": PaddleConfig.MOVE_OFFSET,
+        }
 
-    def move_right(self):
-        """
-        Moves the paddle to the right. 
-        """
-        self.goto(self.xcor() + PaddleConfig.MOVE_DISTANCE, self.ycor())
+        half_paddle_width = DEFAULT_TURTLE_SIZE * PaddleConfig.STRETCH_LENGTH // 2
+        left_boundary = -ScreenConfig.WIDTH // 2 + half_paddle_width
+        right_boundary = ScreenConfig.WIDTH // 2 - half_paddle_width
+
+        xcoor = self.xcor() + direction_map[direction]
+
+        if left_boundary < xcoor < right_boundary:
+            self.goto(xcoor, self.ycor())
