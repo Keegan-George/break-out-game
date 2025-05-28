@@ -19,8 +19,8 @@ brick_factory = BrickFactory()
 brick_factory.generate_brick_wall()
 
 screen.listen()
-screen.onkeypress(paddle.move_left, "Left")
-screen.onkeypress(paddle.move_right, "Right")
+screen.onkeypress(lambda: paddle.move("left"), "Left")
+screen.onkeypress(lambda: paddle.move("right"), "Right")
 
 while scoreboard.lives and brick_factory.bricks:
     screen.update()
