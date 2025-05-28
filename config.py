@@ -49,21 +49,19 @@ class BrickFactoryConfig:
         return (-ScreenConfig.WIDTH // 2, 75)
 
 
+class ScoreBoardConfig:
+    COLOUR = "white"
+    LIVES = 3
+    FONT = ("Arial", 20, "normal")
+
+    @classmethod
+    def location(cls):
+        return(0, ScreenConfig.HEIGHT // 2 - 35)
+
+
+
 # paddle parameters
 PADDLE_WIDTH = DEFAULT_TURTLE_SIZE
 
 # ball parameters
 BALL_SPEED = 0.02
-
-
-# brick parameters
-BRICK_WIDTH = DEFAULT_TURTLE_SIZE
-BRICK_LENGTH = DEFAULT_TURTLE_SIZE * BRICK_STRETCH_LENGTH
-
-
-# scoreboard parameters
-LIVES = 3
-SCORE_DISTANCE_FROM_TOP = 35
-SCORE_X_POSITION = 0
-SCORE_Y_POSITION = ScreenConfig.SCREEN_HEIGHT // 2 - SCORE_DISTANCE_FROM_TOP
-FONT = ("Arial", 20, "normal")
