@@ -25,16 +25,28 @@ class BallConfig:
     COLOUR = "white"
     MOVE_DISTANCE = 5
     BALL_RADIUS = DEFAULT_TURTLE_SIZE // 2
+    GAP = 1
 
     @classmethod
     def starting_position(cls):
         x, y = PaddleConfig.starting_position()
         return (x, y + 20)
-    
+
 
 class BrickConfig:
     SHAPE = "square"
     STRETCH_LENGTH = 4
+
+
+class BrickFactoryConfig:
+    ROWS = 8
+    COLUMNS = 12
+    GAP = 1  # empty space between bricks
+    COLOURS = ["yellow"] * 2 + ["green"] * 2 + ["orange"] * 2 + ["red"] * 2
+
+    @classmethod
+    def starting_position(cls):
+        return (-ScreenConfig.WIDTH // 2, 75)
 
 
 # paddle parameters
@@ -48,14 +60,6 @@ BALL_SPEED = 0.02
 BRICK_WIDTH = DEFAULT_TURTLE_SIZE
 BRICK_LENGTH = DEFAULT_TURTLE_SIZE * BRICK_STRETCH_LENGTH
 
-# brick factory parameters
-GAP_BETWEEN_BRICKS = 1
-NUMBER_OF_ROWS = 8
-NUMBER_OF_BRICKS_PER_ROW = ScreenConfig.SCREEN_WIDTH // (
-    DEFAULT_TURTLE_SIZE * BRICK_STRETCH_LENGTH + GAP_BETWEEN_BRICKS
-)
-BRICKS_STARTING_X_POSITION = -ScreenConfig.SCREEN_WIDTH // 2
-BRICKS_STARTING_Y_POSITION = 75
 
 # scoreboard parameters
 LIVES = 3

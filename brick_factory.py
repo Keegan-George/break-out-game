@@ -1,37 +1,35 @@
-from config import *
 from brick import Brick
+from config import BrickConfig, BrickFactoryConfig, DEFAULT_TURTLE_SIZE
 
 
 class BrickFactory:
     def __init__(self):
-        self.bricks = []
+        self.bricks: list[Brick] = []
 
-    def generate_bricks(self):
-        y_coordinate = BRICKS_STARTING_Y_POSITION
+    def generate_brick_wall(self):
+        """
+        Generates the rows of bricks that form a brick wall. 
+        
+        """
+        x_start, y_start = BrickFactoryConfig.starting_position()
+        brick_length = DEFAULT_TURTLE_SIZE * BrickConfig.STRETCH_LENGTH
 
-        for row in range(NUMBER_OF_ROWS):
-            for column in range(NUMBER_OF_BRICKS_PER_ROW):
-                brick = Brick()
+        for row in range(BrickFactoryConfig.ROWS):
+            x_coordiante = x_start
 
-                if row < 2:
-                    brick.color("yellow")
-                elif row < 4:
-                    brick.color("green")
-                elif row < 6:
-                    brick.color("orange")
-                else:
-                    brick.color("red")
-
-                x_coordinate = (
-                    BRICKS_STARTING_X_POSITION
-                    + BRICK_LENGTH / 2
-                    + (
-                        column
-                        * (BASE_TURTLE_LENGTH + GAP_BETWEEN_BRICKS)
-                        * BRICK_STRETCH_LENGTH
-                    )
-                )
-                brick.goto(x_coordinate, y_coordinate)
+            for column in range(BrickFactoryConfig.COLUMNS):
+                x_coordiante += brick_length / 2 + (column * (DEFAULT_TURTLE_SIZE + BrickFactoryConfig.GAP) * BrickConfig.STRETCH_LENGTH)
+                brick = self.create_brick(x_coordiante, y_start, BrickFactoryConfig.COLOURS[row])
                 self.bricks.append(brick)
 
-            y_coordinate += BRICK_WIDTH + GAP_BETWEEN_BRICKS
+            y_start += DEFAULT_TURTLE_SIZE + BrickFactoryConfig.GAP
+
+
+    def create_brick(self, x: int, y: int, colour: str) -> Brick:
+        """
+        Returns a new Brick with the given coordinates and colour. 
+        """
+        brick = Brick()
+        brick.color(colour)
+        brick.goto(x, y)
+        return brick
