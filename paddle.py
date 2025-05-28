@@ -1,18 +1,24 @@
-from config import *
 from turtle import Turtle
+from config import PaddleConfig
 
 
 class Paddle(Turtle):
     def __init__(self) -> None:
         super().__init__()
-        self.shape("square")
-        self.color(PADDLE_COLOUR)
-        self.shapesize(stretch_len=PADDLE_STRETCH_LENGTH)
+        self.shape(PaddleConfig.SHAPE)
+        self.color(PaddleConfig.COLOUR)
+        self.shapesize(stretch_len=PaddleConfig.STRETCH_LENGTH)
         self.penup()
-        self.goto(PADDLE_STARTING_X_POSITION, PADDLE_Y_POSITION)
+        self.goto(PaddleConfig.starting_position())
 
     def move_left(self):
-        self.goto(self.xcor() - PADDLE_MOVE_DISTANCE, self.ycor())
+        """
+        Moves the paddle to the left.
+        """
+        self.goto(self.xcor() - PaddleConfig.MOVE_DISTANCE, self.ycor())
 
     def move_right(self):
-        self.goto(self.xcor() + PADDLE_MOVE_DISTANCE, self.ycor())
+        """
+        Moves the paddle to the right. 
+        """
+        self.goto(self.xcor() + PaddleConfig.MOVE_DISTANCE, self.ycor())
