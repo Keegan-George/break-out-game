@@ -1,20 +1,32 @@
-# screen parameteres
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
-SCREEN_BACKGROUND_COLOUR = "black"
-
 # default length of a turtle object
 BASE_TURTLE_LENGTH = 21
 
+class ScreenConfig:
+    WIDTH = 800
+    HEIGHT = 600
+    BACKGROUND_COLOUR = "black"
+    TITLE = "Break Out"
+
+class PaddleConfig:
+    SHAPE = "square"
+    COLOUR = "white"
+    STRETCH_LENGTH = 6
+    MOVE_DISTANCE = 15
+
+    @classmethod
+    def starting_position(cls):
+        return (0, -ScreenConfig.HEIGHT // 2 + 50)
+
+
+
+
 # paddle parameters
-PADDLE_COLOUR = "white"
-PADDLE_STRETCH_LENGTH = 6
+
 PADDLE_WIDTH = BASE_TURTLE_LENGTH
 PADDLE_LENGTH = BASE_TURTLE_LENGTH * PADDLE_STRETCH_LENGTH
 PADDLE_DISTANCE_FROM_SCREEN_BOTTOM = 50
 PADDLE_STARTING_X_POSITION = 0
 PADDLE_Y_POSITION = SCREEN_HEIGHT // -2 + PADDLE_DISTANCE_FROM_SCREEN_BOTTOM
-PADDLE_MOVE_DISTANCE = 15
 
 # ball parameters
 BALL_COLOUR = "white"
