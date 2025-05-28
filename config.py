@@ -13,7 +13,7 @@ class PaddleConfig:
     SHAPE = "square"
     COLOUR = "white"
     STRETCH_LENGTH = 6
-    MOVE_DISTANCE = 15
+    MOVE_OFFSET = 15
 
     @classmethod
     def starting_position(cls):
