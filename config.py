@@ -35,13 +35,13 @@ class BallConfig:
 
 class BrickConfig:
     SHAPE = "square"
-    STRETCH_LENGTH = 4
+    STRETCH_LENGTH = 3
 
 
 class BrickFactoryConfig:
     ROWS = 8
     COLUMNS = 12
-    GAP = 1  # empty space between bricks
+    GAP = 2  # empty space between bricks
     COLOURS = ["yellow"] * 2 + ["green"] * 2 + ["orange"] * 2 + ["red"] * 2
 
     @classmethod

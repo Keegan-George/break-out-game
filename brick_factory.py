@@ -18,7 +18,7 @@ class BrickFactory:
             x_coordiante = x_start
 
             for column in range(BrickFactoryConfig.COLUMNS):
-                x_coordiante += brick_length / 2 + (column * (DEFAULT_TURTLE_SIZE + BrickFactoryConfig.GAP) * BrickConfig.STRETCH_LENGTH)
+                x_coordiante += BrickFactoryConfig.GAP + brick_length 
                 brick = self.create_brick(x_coordiante, y_start, BrickFactoryConfig.COLOURS[row])
                 self.bricks.append(brick)
 
