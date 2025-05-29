@@ -16,13 +16,13 @@ class Paddle(Turtle):
         Move the paddle left or right accordingly based on the direction passed.
         Prevents the paddle from going out of bounds.
         """
-        if direction not in direction_map:
-            raise ValueError("Direction must be 'left' or 'right'.")
-
         direction_map = {
             "left": -PaddleConfig.MOVE_OFFSET,
             "right": PaddleConfig.MOVE_OFFSET,
         }
+
+        if direction not in direction_map:
+            raise ValueError("Direction must be 'left' or 'right'.")
 
         half_paddle_width = PaddleConfig.paddle_width() // 2
         left_boundary = -ScreenConfig.WIDTH // 2 + half_paddle_width
