@@ -10,7 +10,7 @@ class Brick(Turtle):
         self.point: int | None = None
         self.penup()
 
-    def remove(self):
+    def remove(self) -> None:
         """
         Remove brick by hiding it and moving it to an off screen location.
         """

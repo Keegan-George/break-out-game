@@ -11,7 +11,7 @@ class Paddle(Turtle):
         self.penup()
         self.goto(PaddleConfig.starting_position())
 
-    def move(self, direction: str):
+    def move(self, direction: str) -> None:
         """
         Move the paddle left or right accordingly based on the direction passed.
         Prevents the paddle from going out of bounds.

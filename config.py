@@ -18,7 +18,7 @@ class PaddleConfig:
     @classmethod
     def starting_position(cls) -> tuple[int, int]:
         return (0, -ScreenConfig.HEIGHT // 2 + 50)
-    
+
     @classmethod
     def paddle_length(cls) -> int:
         return DEFAULT_TURTLE_SIZE * PaddleConfig.STRETCH_LENGTH
@@ -33,7 +33,7 @@ class BallConfig:
     BOUNCE_FACTOR = 0.07
 
     @classmethod
-    def starting_position(cls):
+    def starting_position(cls) -> tuple[int, int]:
         x, y = PaddleConfig.starting_position()
         return (x, y + 20)
 
@@ -56,7 +56,7 @@ class BrickFactoryConfig:
     POINTS = {"yellow": 1, "green": 3, "orange": 5, "red": 7}
 
     @classmethod
-    def starting_position(cls):
+    def starting_position(cls) -> tuple[int, int]:
         return (-ScreenConfig.WIDTH // 2, 75)
 
 
@@ -66,7 +66,7 @@ class ScoreBoardConfig:
     FONT = ("Arial", 20, "normal")
 
     @classmethod
-    def location(cls):
+    def location(cls) -> tuple[int, int]:
         return (0, ScreenConfig.HEIGHT // 2 - 35)
 
 

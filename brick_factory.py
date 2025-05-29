@@ -6,7 +6,7 @@ class BrickFactory:
     def __init__(self):
         self.bricks: list[Brick] = []
 
-    def generate_brick_wall(self):
+    def generate_brick_wall(self) -> None:
         """
         Generates the rows of bricks that form a brick wall.
         """

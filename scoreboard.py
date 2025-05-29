@@ -13,14 +13,14 @@ class ScoreBoard(Turtle):
         self.goto(ScoreBoardConfig.location())
         self.refresh_scoreboard()
 
-    def refresh_scoreboard(self):
+    def refresh_scoreboard(self) -> None:
         """
         Clear and refresh the scoreboard display.
         """
         self.clear()
         self.display_score()
 
-    def display_score(self):
+    def display_score(self) -> None:
         """
         Display the current score and the number of lives remaining.
         """
@@ -30,7 +30,7 @@ class ScoreBoard(Turtle):
             font=ScoreBoardConfig.FONT,
         )
 
-    def display_message(self, result: str):
+    def display_message(self, result: str) -> None:
         """
         Display a message in the center of the screen.
         """
