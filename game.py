@@ -2,6 +2,7 @@ from turtle import Screen
 from ball import Ball
 from paddle import Paddle
 from time import sleep
+from brick import Brick
 from brick_factory import BrickFactory
 from scoreboard import ScoreBoard
 from config import *
@@ -77,15 +78,20 @@ class Game:
                 ball.bounce_y()
 
             # ball collision with brick
-            for i in range(len(brick_factory.bricks)):
-                brick = brick_factory.bricks[i]
-                if ball.has_hit_other_object(brick):
-                    scoreboard.score += brick.point
-                    scoreboard.refresh_scoreboard()
-                    ball.bounce_y()
-                    brick.remove()
-                    brick_factory.bricks.pop(i)
-                    break
+            hit_brick: Brick = next(
+                (
+                    brick
+                    for brick in brick_factory.bricks
+                    if ball.has_hit_other_object(brick)
+                ),
+                None,
+            )
+            if hit_brick:
+                scoreboard.score += hit_brick.point
+                scoreboard.refresh_scoreboard()
+                ball.bounce_y()
+                hit_brick.remove()
+                brick_factory.bricks.remove(hit_brick)
 
         if not scoreboard.lives:
             scoreboard.display_message("GAME OVER")
