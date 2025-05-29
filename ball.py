@@ -10,10 +10,11 @@ class Ball(Turtle):
         self.shape(BallConfig.SHAPE)
         self.color(BallConfig.COLOUR)
         self.penup()
-        self.goto(BallConfig.starting_position())
-        self.x_move: float = BallConfig.MOVE_DISTANCE
-        self.y_move: float = BallConfig.MOVE_DISTANCE
         self.radius = BallConfig.BALL_RADIUS
+        self.x_move: float = None
+        self.y_move: float = None
+        self.reset()
+        
 
     def move(self) -> None:
         """
@@ -78,3 +79,4 @@ class Ball(Turtle):
         """
         self.x_move = BallConfig.MOVE_DISTANCE
         self.y_move = BallConfig.MOVE_DISTANCE
+        self.goto(BallConfig.starting_position())

@@ -52,7 +52,7 @@ class Game:
         """
         while scoreboard.lives and brick_factory.bricks:
             screen.update()
-            sleep(BALL_SPEED)
+            sleep(GAME_SPEED)
 
             ball.move()
 
@@ -62,7 +62,6 @@ class Game:
                 scoreboard.refresh_scoreboard()
                 ball.bounce_y()
                 ball.reset()
-                ball.goto(paddle.xcor(), paddle.ycor() + PADDLE_WIDTH)
 
             # ball collision with upper hall
             if ball.has_hit_upper_wall():

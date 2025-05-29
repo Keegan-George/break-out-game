@@ -1,6 +1,9 @@
 # default length of a turtle object
 DEFAULT_TURTLE_SIZE = 20
 
+# game speed
+GAME_SPEED = 0.02
+
 
 class ScreenConfig:
     WIDTH = 800
@@ -22,7 +25,7 @@ class PaddleConfig:
     @classmethod
     def paddle_dimension(cls) -> tuple[int, int]:
         """
-        Return a tuple (width, length) representing the dimensions of the paddle. 
+        Return a tuple (width, length) representing the dimensions of the paddle.
         """
         return (DEFAULT_TURTLE_SIZE, DEFAULT_TURTLE_SIZE * PaddleConfig.STRETCH_LENGTH)
 
@@ -39,7 +42,7 @@ class BallConfig:
     @classmethod
     def starting_position(cls) -> tuple[int, int]:
         x, y = PaddleConfig.starting_position()
-        return (x, y + 20)
+        return (x, y + DEFAULT_TURTLE_SIZE)
 
 
 class BrickConfig:
@@ -72,10 +75,3 @@ class ScoreBoardConfig:
     @classmethod
     def location(cls) -> tuple[int, int]:
         return (0, ScreenConfig.HEIGHT // 2 - 35)
-
-
-# paddle parameters
-PADDLE_WIDTH = DEFAULT_TURTLE_SIZE
-
-# ball parameters
-BALL_SPEED = 0.02
