@@ -7,6 +7,7 @@ class Brick(Turtle):
         super().__init__()
         self.shape(BrickConfig.SHAPE)
         self.shapesize(stretch_len=BrickConfig.STRETCH_LENGTH)
+        self.point = None
         self.penup()
 
     def remove(self):

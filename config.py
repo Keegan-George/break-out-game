@@ -43,6 +43,7 @@ class BrickFactoryConfig:
     COLUMNS = 12
     GAP = 2  # empty space between bricks
     COLOURS = ["yellow"] * 2 + ["green"] * 2 + ["orange"] * 2 + ["red"] * 2
+    POINTS = {"yellow": 1, "green": 3, "orange": 5, "red": 7}
 
     @classmethod
     def starting_position(cls):
@@ -56,8 +57,7 @@ class ScoreBoardConfig:
 
     @classmethod
     def location(cls):
-        return(0, ScreenConfig.HEIGHT // 2 - 35)
-
+        return (0, ScreenConfig.HEIGHT // 2 - 35)
 
 
 # paddle parameters

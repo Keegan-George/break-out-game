@@ -46,7 +46,7 @@ while scoreboard.lives and brick_factory.bricks:
     for i in range(len(brick_factory.bricks) - 1, -1, -1):
         brick = brick_factory.bricks[i]
         if ball.has_hit_other_object(brick):
-            scoreboard.score += 1
+            scoreboard.score += brick.point
             scoreboard.update_score()
             ball.bounce_y()
             brick.remove()
