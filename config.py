@@ -20,8 +20,11 @@ class PaddleConfig:
         return (0, -ScreenConfig.HEIGHT // 2 + 50)
 
     @classmethod
-    def paddle_length(cls) -> int:
-        return DEFAULT_TURTLE_SIZE * PaddleConfig.STRETCH_LENGTH
+    def paddle_dimension(cls) -> tuple[int, int]:
+        """
+        Return a tuple (width, length) representing the dimensions of the paddle. 
+        """
+        return (DEFAULT_TURTLE_SIZE, DEFAULT_TURTLE_SIZE * PaddleConfig.STRETCH_LENGTH)
 
 
 class BallConfig:

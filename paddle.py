@@ -8,6 +8,7 @@ class Paddle(Turtle):
         self.shape(PaddleConfig.SHAPE)
         self.color(PaddleConfig.COLOUR)
         self.shapesize(stretch_len=PaddleConfig.STRETCH_LENGTH)
+        self.width, self.length = PaddleConfig.paddle_dimension()
         self.penup()
         self.goto(PaddleConfig.starting_position())
 
@@ -24,9 +25,9 @@ class Paddle(Turtle):
         if direction not in direction_map:
             raise ValueError("Direction must be 'left' or 'right'.")
 
-        half_paddle_width = PaddleConfig.paddle_length() // 2
-        left_boundary = -ScreenConfig.WIDTH // 2 + half_paddle_width
-        right_boundary = ScreenConfig.WIDTH // 2 - half_paddle_width
+        half_paddle_length = self.length // 2
+        left_boundary = -ScreenConfig.WIDTH // 2 + half_paddle_length
+        right_boundary = ScreenConfig.WIDTH // 2 - half_paddle_length
 
         xcoor = self.xcor() + direction_map[direction]
 
