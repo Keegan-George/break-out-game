@@ -41,6 +41,7 @@ while scoreboard.lives and brick_factory.bricks:
         ball.bounce_x()
 
     if ball.has_hit_other_object(paddle):
+        ball.bounce_x_paddle(paddle)
         ball.bounce_y()
 
     for i in range(len(brick_factory.bricks) - 1, -1, -1):

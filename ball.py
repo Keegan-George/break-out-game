@@ -13,7 +13,7 @@ class Ball(Turtle):
         self.y_move = BallConfig.MOVE_DISTANCE
 
     def move(self) -> None:
-        """ "
+        """
         Move the ball.
         """
         self.goto(self.xcor() + self.x_move, self.ycor() + self.y_move)
@@ -23,6 +23,13 @@ class Ball(Turtle):
         Reverse the direction of the ball along itx x-trajectory.
         """
         self.x_move *= -1
+
+    def bounce_x_paddle(self, paddle):
+        """
+        Reverse the direction of the ball when it makes contact with the paddle using slight variation.
+        """
+        contact_point = self.xcor() - paddle.xcor()
+        self.x_move = contact_point * BallConfig.BOUNCE_FACTOR
 
     def bounce_y(self) -> None:
         """
