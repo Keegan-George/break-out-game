@@ -24,16 +24,9 @@ class ScoreBoard(Turtle):
             font=ScoreBoardConfig.FONT,
         )
 
-    def gameover(self):
+    def display_message(self, result: str):
         """
-        Displays game over if the users loses all three lives.
-        """
-        self.goto(0, 0)
-        self.write("GAME OVER", align="center", font=ScoreBoardConfig.FONT)
-
-    def winner(self):
-        """
-        Displays winner if the user eliminates all bricks.
+        Used to display a message on the screen.
         """
         self.goto(0, 0)
-        self.write("YOU WIN", align="center", font=ScoreBoardConfig.FONT)
+        self.write(result, align="center", font=ScoreBoardConfig.FONT)

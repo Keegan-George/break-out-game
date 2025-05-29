@@ -56,10 +56,10 @@ while scoreboard.lives and brick_factory.bricks:
             break
 
 if not scoreboard.lives:
-    scoreboard.gameover()
+    scoreboard.display_message("GAME OVER")
 
 if not brick_factory.bricks:
-    scoreboard.winner()
+    scoreboard.display_message("YOU WIN")
 
 
 screen.exitonclick()
