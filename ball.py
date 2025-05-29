@@ -1,7 +1,7 @@
 from turtle import Turtle
 from brick import Brick
 from paddle import Paddle
-from config import BallConfig, ScreenConfig, DEFAULT_TURTLE_SIZE
+from config import BallConfig, ScreenConfig
 
 
 class Ball(Turtle):

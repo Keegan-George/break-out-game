@@ -1,5 +1,5 @@
 from brick import Brick
-from config import BrickConfig, BrickFactoryConfig, DEFAULT_TURTLE_SIZE
+from config import BrickConfig, BrickFactoryConfig
 
 
 class BrickFactory:
@@ -11,7 +11,7 @@ class BrickFactory:
         Generates the rows of bricks that form a brick wall.
         """
         x_start, y_start = BrickFactoryConfig.starting_position()
-        brick_length = BrickConfig.brick_dimension()[1]
+        brick_width, brick_length = BrickConfig.brick_dimension()
 
         for row in range(BrickFactoryConfig.ROWS):
             x_coordinate = x_start
@@ -23,7 +23,7 @@ class BrickFactory:
                 )
                 self.bricks.append(brick)
 
-            y_start += DEFAULT_TURTLE_SIZE + BrickFactoryConfig.GAP
+            y_start += brick_width + BrickFactoryConfig.GAP
 
     def create_brick(self, x: int, y: int, colour: str) -> Brick:
         """
