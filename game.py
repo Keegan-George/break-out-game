@@ -1,14 +1,25 @@
 from turtle import Screen
-from paddle import Paddle
 from ball import Ball
+from paddle import Paddle
 from time import sleep
 from brick_factory import BrickFactory
 from scoreboard import ScoreBoard
 from config import *
 
-class GameManager:
-    def initialize_game() -> tuple[Screen, Paddle, Ball, BrickFactory, ScoreBoard]:
-        """ Initialize the game and components."""
+
+class Game:
+    def __init__(self):
+        self.screen, self.paddle, self.ball, self.brick_factory, self.scoreboard = (
+            self.initialize_game()
+        )
+
+    def play(self):
+        self.play_game(
+            self.screen, self.paddle, self.ball, self.brick_factory, self.scoreboard
+        )
+
+    def initialize_game(self) -> tuple[Screen, Paddle, Ball, BrickFactory, ScoreBoard]:
+        """Initialize the game and components."""
         screen = Screen()
         screen.setup(width=ScreenConfig.WIDTH, height=ScreenConfig.HEIGHT)
         screen.bgcolor(ScreenConfig.BACKGROUND_COLOUR)
@@ -27,10 +38,16 @@ class GameManager:
 
         return screen, paddle, ball, brick_factory, scoreboard
 
-
-    def start_game(screen: Screen, paddle: Paddle, ball: Ball, brick_factory: BrickFactory, scoreboard: ScoreBoard) -> None:
+    def play_game(
+        self,
+        screen: Screen,
+        paddle: Paddle,
+        ball: Ball,
+        brick_factory: BrickFactory,
+        scoreboard: ScoreBoard,
+    ) -> None:
         """
-        Starts the game. 
+        Starts the game.
         """
         while scoreboard.lives and brick_factory.bricks:
             screen.update()
@@ -70,6 +87,5 @@ class GameManager:
 
         if not brick_factory.bricks:
             scoreboard.display_message("YOU WIN")
-
 
         screen.exitonclick()

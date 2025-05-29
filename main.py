@@ -1,5 +1,5 @@
-from game_manager import GameManager
+from game import Game
 
 
-screen, paddle, ball, brick_factory, scoreboard = GameManager.initialize_game()
-GameManager.start_game(screen, paddle, ball, brick_factory, scoreboard)
+game = Game()
+game.play()
