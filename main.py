@@ -32,6 +32,7 @@ while scoreboard.lives and brick_factory.bricks:
         scoreboard.lives -= 1
         scoreboard.update_score()
         ball.bounce_y()
+        ball.reset()
         ball.goto(paddle.xcor(), paddle.ycor() + PADDLE_WIDTH)
 
     if ball.has_hit_upper_wall():
