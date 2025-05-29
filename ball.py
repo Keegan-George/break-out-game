@@ -27,7 +27,7 @@ class Ball(Turtle):
         """
         self.x_move *= -BallConfig.SPEED_FACTOR
 
-    def bounce_x_paddle(self, paddle):
+    def bounce_x_paddle(self, paddle: Paddle):
         """
         Reverse the direction of the ball based on where it makes contact with the paddle.
         """
