@@ -20,7 +20,7 @@ class PaddleConfig:
         return (0, -ScreenConfig.HEIGHT // 2 + 50)
     
     @classmethod
-    def paddle_width(cls) -> int:
+    def paddle_length(cls) -> int:
         return DEFAULT_TURTLE_SIZE * PaddleConfig.STRETCH_LENGTH
 
 

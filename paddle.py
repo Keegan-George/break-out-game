@@ -24,7 +24,7 @@ class Paddle(Turtle):
         if direction not in direction_map:
             raise ValueError("Direction must be 'left' or 'right'.")
 
-        half_paddle_width = PaddleConfig.paddle_width() // 2
+        half_paddle_width = PaddleConfig.paddle_length() // 2
         left_boundary = -ScreenConfig.WIDTH // 2 + half_paddle_width
         right_boundary = ScreenConfig.WIDTH // 2 - half_paddle_width
 
