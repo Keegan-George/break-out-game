@@ -14,7 +14,6 @@ class Ball(Turtle):
         self.x_move: float = None
         self.y_move: float = None
         self.reset()
-        
 
     def move(self) -> None:
         """
