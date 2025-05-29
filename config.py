@@ -41,6 +41,7 @@ class BallConfig:
 class BrickConfig:
     SHAPE = "square"
     STRETCH_LENGTH = 3
+    OFF_SCREEN_LOCATION = (10000, 10000)
 
 
 class BrickFactoryConfig:
