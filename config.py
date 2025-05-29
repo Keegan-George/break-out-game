@@ -48,8 +48,8 @@ class BrickConfig:
     OFF_SCREEN_LOCATION = (10000, 10000)
 
     @classmethod
-    def brick_length(cls) -> int:
-        return DEFAULT_TURTLE_SIZE * BrickConfig.STRETCH_LENGTH
+    def brick_dimension(cls) -> tuple[int, int]:
+        return (DEFAULT_TURTLE_SIZE, DEFAULT_TURTLE_SIZE * BrickConfig.STRETCH_LENGTH)
 
 
 class BrickFactoryConfig:
