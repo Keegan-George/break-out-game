@@ -9,18 +9,17 @@ class BrickFactory:
     def generate_brick_wall(self):
         """
         Generates the rows of bricks that form a brick wall.
-
         """
         x_start, y_start = BrickFactoryConfig.starting_position()
-        brick_length = DEFAULT_TURTLE_SIZE * BrickConfig.STRETCH_LENGTH
+        brick_length = BrickConfig.brick_length()
 
         for row in range(BrickFactoryConfig.ROWS):
-            x_coordiante = x_start
+            x_coordinate = x_start
 
-            for column in range(BrickFactoryConfig.COLUMNS):
-                x_coordiante += BrickFactoryConfig.GAP + brick_length
+            for _ in range(BrickFactoryConfig.COLUMNS):
+                x_coordinate += BrickFactoryConfig.GAP + brick_length
                 brick = self.create_brick(
-                    x_coordiante, y_start, BrickFactoryConfig.COLOURS[row]
+                    x_coordinate, y_start, BrickFactoryConfig.COLOURS[row]
                 )
                 self.bricks.append(brick)
 

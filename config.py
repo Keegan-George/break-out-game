@@ -43,6 +43,10 @@ class BrickConfig:
     STRETCH_LENGTH = 3
     OFF_SCREEN_LOCATION = (10000, 10000)
 
+    @classmethod
+    def brick_length(cls) -> int:
+        return DEFAULT_TURTLE_SIZE * BrickConfig.STRETCH_LENGTH
+
 
 class BrickFactoryConfig:
     ROWS = 8
