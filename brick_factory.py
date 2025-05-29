@@ -11,7 +11,7 @@ class BrickFactory:
         Generates the rows of bricks that form a brick wall.
         """
         x_start, y_start = BrickFactoryConfig.starting_position()
-        brick_length = BrickConfig.brick_length()
+        brick_length = BrickConfig.brick_dimension()[1]
 
         for row in range(BrickFactoryConfig.ROWS):
             x_coordinate = x_start
