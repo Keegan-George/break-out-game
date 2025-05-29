@@ -30,7 +30,8 @@ class BallConfig:
     MOVE_DISTANCE = 5
     BALL_RADIUS = DEFAULT_TURTLE_SIZE // 2
     GAP = 1
-    BOUNCE_FACTOR = 0.07
+    PADDLE_BOUNCE_FACTOR = 0.07
+    SPEED_FACTOR = 1.02
 
     @classmethod
     def starting_position(cls) -> tuple[int, int]:
