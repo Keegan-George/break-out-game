@@ -1,5 +1,7 @@
-from config import BallConfig, ScreenConfig, DEFAULT_TURTLE_SIZE
 from turtle import Turtle
+from brick import Brick
+from paddle import Paddle
+from config import BallConfig, ScreenConfig, DEFAULT_TURTLE_SIZE
 
 
 class Ball(Turtle):
@@ -11,6 +13,7 @@ class Ball(Turtle):
         self.goto(BallConfig.starting_position())
         self.x_move: float = BallConfig.MOVE_DISTANCE
         self.y_move: float = BallConfig.MOVE_DISTANCE
+        self.radius = BallConfig.BALL_RADIUS
 
     def move(self) -> None:
         """
@@ -41,29 +44,26 @@ class Ball(Turtle):
         """
         Return True if the ball has hit the upper wall. False otherwise.
         """
-        return self.ycor() + BallConfig.BALL_RADIUS >= ScreenConfig.HEIGHT // 2
+        return self.ycor() + self.radius >= ScreenConfig.HEIGHT // 2
 
     def has_hit_side_wall(self) -> bool:
         """
         Return True if the ball has hit either of the side walls. False otherwise.
         """
         return (
-            self.xcor() + BallConfig.BALL_RADIUS >= ScreenConfig.WIDTH // 2
-            or self.xcor() - BallConfig.BALL_RADIUS <= -ScreenConfig.WIDTH // 2
+            self.xcor() + self.radius >= ScreenConfig.WIDTH // 2
+            or self.xcor() - self.radius <= -ScreenConfig.WIDTH // 2
         )
 
-    def has_hit_other_object(self, object: Turtle) -> bool:
+    def has_hit_other_object(self, object: Paddle | Brick) -> bool:
         """
         Return True if the ball has collided with another object; paddle or brick. False otherwise.
         """
-        object_width = object.shapesize()[0] * DEFAULT_TURTLE_SIZE  # stretch_wid
-        object_length = object.shapesize()[1] * DEFAULT_TURTLE_SIZE  # stretch_len
-
         return (
-            self.xcor() - BallConfig.BALL_RADIUS < object.xcor() + object_length / 2
-            and self.xcor() + BallConfig.BALL_RADIUS > object.xcor() - object_length / 2
-            and self.ycor() - BallConfig.BALL_RADIUS < object.ycor() + object_width / 2
-            and self.ycor() + BallConfig.BALL_RADIUS > object.ycor() - object_width / 2
+            self.xcor() - self.radius < object.xcor() + object.length / 2
+            and self.xcor() + self.radius > object.xcor() - object.length / 2
+            and self.ycor() - self.radius < object.ycor() + object.width / 2
+            and self.ycor() + self.radius > object.ycor() - object.width / 2
         )
 
     def is_below_screen(self) -> bool:
