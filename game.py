@@ -55,6 +55,7 @@ class Game:
 
             ball.move()
 
+            # ball below screen
             if ball.is_below_screen():
                 scoreboard.lives -= 1
                 scoreboard.refresh_scoreboard()
@@ -62,17 +63,21 @@ class Game:
                 ball.reset()
                 ball.goto(paddle.xcor(), paddle.ycor() + PADDLE_WIDTH)
 
+            # ball collision with upper hall
             if ball.has_hit_upper_wall():
                 ball.bounce_y()
 
+            # ball collision with side wall
             if ball.has_hit_side_wall():
                 ball.bounce_x()
 
+            # ball collision with paddle
             if ball.has_hit_other_object(paddle):
                 ball.bounce_x_paddle(paddle)
                 ball.bounce_y()
 
-            for i in range(len(brick_factory.bricks) - 1, -1, -1):
+            # ball collision with brick
+            for i in range(len(brick_factory.bricks)):
                 brick = brick_factory.bricks[i]
                 if ball.has_hit_other_object(brick):
                     scoreboard.score += brick.point
