@@ -1,5 +1,5 @@
 from turtle import Turtle
-from config import PaddleConfig, ScreenConfig, DEFAULT_TURTLE_SIZE
+from config import PaddleConfig, ScreenConfig
 
 
 class Paddle(Turtle):
@@ -16,12 +16,15 @@ class Paddle(Turtle):
         Move the paddle left or right accordingly based on the direction passed.
         Prevents the paddle from going out of bounds.
         """
+        if direction not in direction_map:
+            raise ValueError("Direction must be 'left' or 'right'.")
+
         direction_map = {
             "left": -PaddleConfig.MOVE_OFFSET,
             "right": PaddleConfig.MOVE_OFFSET,
         }
 
-        half_paddle_width = DEFAULT_TURTLE_SIZE * PaddleConfig.STRETCH_LENGTH // 2
+        half_paddle_width = PaddleConfig.paddle_width() // 2
         left_boundary = -ScreenConfig.WIDTH // 2 + half_paddle_width
         right_boundary = ScreenConfig.WIDTH // 2 - half_paddle_width
 

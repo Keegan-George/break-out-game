@@ -16,8 +16,12 @@ class PaddleConfig:
     MOVE_OFFSET = 15
 
     @classmethod
-    def starting_position(cls):
+    def starting_position(cls) -> tuple[int, int]:
         return (0, -ScreenConfig.HEIGHT // 2 + 50)
+    
+    @classmethod
+    def paddle_width(cls) -> int:
+        return DEFAULT_TURTLE_SIZE * PaddleConfig.STRETCH_LENGTH
 
 
 class BallConfig:
