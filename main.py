@@ -30,7 +30,7 @@ while scoreboard.lives and brick_factory.bricks:
 
     if ball.is_below_screen():
         scoreboard.lives -= 1
-        scoreboard.update_score()
+        scoreboard.refresh_scoreboard()
         ball.bounce_y()
         ball.reset()
         ball.goto(paddle.xcor(), paddle.ycor() + PADDLE_WIDTH)
@@ -49,7 +49,7 @@ while scoreboard.lives and brick_factory.bricks:
         brick = brick_factory.bricks[i]
         if ball.has_hit_other_object(brick):
             scoreboard.score += brick.point
-            scoreboard.update_score()
+            scoreboard.refresh_scoreboard()
             ball.bounce_y()
             brick.remove()
             brick_factory.bricks.pop(i)

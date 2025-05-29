@@ -6,18 +6,24 @@ class ScoreBoard(Turtle):
     def __init__(self) -> None:
         super().__init__()
         self.color(ScoreBoardConfig.COLOUR)
-        self.lives = ScoreBoardConfig.LIVES
-        self.score = 0
+        self.lives: int = ScoreBoardConfig.LIVES
+        self.score: int = 0
         self.hideturtle()
         self.penup()
         self.goto(ScoreBoardConfig.location())
-        self.update_score()
+        self.refresh_scoreboard()
 
-    def update_score(self):
+    def refresh_scoreboard(self):
         """
-        Updates the scoreboard with the latest score.
+        Clear and refresh the scoreboard display.
         """
         self.clear()
+        self.display_score()
+
+    def display_score(self):
+        """
+        Display the current score and the number of lives remaining.
+        """
         self.write(
             f"Score: {self.score}   Lives: {self.lives}",
             align="center",
@@ -26,7 +32,7 @@ class ScoreBoard(Turtle):
 
     def display_message(self, result: str):
         """
-        Used to display a message on the screen.
+        Display a message in the center of the screen.
         """
         self.goto(0, 0)
         self.write(result, align="center", font=ScoreBoardConfig.FONT)
