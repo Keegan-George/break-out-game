@@ -25,11 +25,14 @@ class Paddle(Turtle):
         if direction not in direction_map:
             raise ValueError("Direction must be 'left' or 'right'.")
 
+        # define boundaries
         half_paddle_length = self.length // 2
         left_boundary = -ScreenConfig.WIDTH // 2 + half_paddle_length
         right_boundary = ScreenConfig.WIDTH // 2 - half_paddle_length
 
+        # calculate new x-position
         xcoor = self.xcor() + direction_map[direction]
 
+        # move paddle only if the new x-position is within the boundary
         if left_boundary < xcoor < right_boundary:
             self.goto(xcoor, self.ycor())
