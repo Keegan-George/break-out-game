@@ -15,7 +15,7 @@ class ScoreBoard(Turtle):
 
     def refresh_scoreboard(self) -> None:
         """
-        Clear and refresh the scoreboard display.
+        Clear and refresh the scoreboard.
         """
         self.clear()
         self.display_score()
