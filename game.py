@@ -1,11 +1,11 @@
+from time import sleep
 from turtle import Screen
 from ball import Ball
-from paddle import Paddle
-from time import sleep
 from brick import Brick
-from brick_factory import BrickFactory
+from paddle import Paddle
 from scoreboard import ScoreBoard
-from config import *
+from brick_factory import BrickFactory
+from config import GAME_SPEED, ScreenConfig
 
 
 class Game:
@@ -15,12 +15,17 @@ class Game:
         )
 
     def play(self):
+        """
+        Call the play_game function passed with the initialized game components.
+        """
         self.play_game(
             self.screen, self.paddle, self.ball, self.brick_factory, self.scoreboard
         )
 
     def initialize_game(self) -> tuple[Screen, Paddle, Ball, BrickFactory, ScoreBoard]:
-        """Initialize the game and components."""
+        """
+        Initialize the game and components.
+        """
         screen = Screen()
         screen.setup(width=ScreenConfig.WIDTH, height=ScreenConfig.HEIGHT)
         screen.bgcolor(ScreenConfig.BACKGROUND_COLOUR)
@@ -50,6 +55,8 @@ class Game:
         """
         Starts the game.
         """
+
+        # game loop
         while scoreboard.lives and brick_factory.bricks:
             screen.update()
             sleep(GAME_SPEED)
@@ -92,10 +99,7 @@ class Game:
                 hit_brick.remove()
                 brick_factory.bricks.remove(hit_brick)
 
-        if not scoreboard.lives:
-            scoreboard.display_message("GAME OVER")
-
-        if not brick_factory.bricks:
-            scoreboard.display_message("YOU WIN")
+        # display result
+        scoreboard.display_message("GAME OVER" if brick_factory.bricks else "YOU WIN")
 
         screen.exitonclick()
