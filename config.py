@@ -20,6 +20,9 @@ class PaddleConfig:
 
     @classmethod
     def starting_position(cls) -> tuple[int, int]:
+        """
+        Return a tuple (x, y) representing the starting position of the paddle. 
+        """
         return (0, -ScreenConfig.HEIGHT // 2 + 50)
 
     @classmethod
@@ -41,6 +44,9 @@ class BallConfig:
 
     @classmethod
     def starting_position(cls) -> tuple[int, int]:
+        """
+        Return a tuple (x, y) representing the starting position of the ball. 
+        """
         x, y = PaddleConfig.starting_position()
         return (x, y + BASE_OBJECT_SIZE)
 
@@ -52,6 +58,9 @@ class BrickConfig:
 
     @classmethod
     def brick_dimension(cls) -> tuple[int, int]:
+        """
+        Return a tuple (width, length) representing the dimensions of a brick. 
+        """
         return (BASE_OBJECT_SIZE, BASE_OBJECT_SIZE * BrickConfig.STRETCH_LENGTH)
 
 
@@ -64,6 +73,9 @@ class BrickFactoryConfig:
 
     @classmethod
     def starting_position(cls) -> tuple[int, int]:
+        """
+        Return a tuple (x, y) representing the starting position of the first brick.
+        """
         return (-ScreenConfig.WIDTH // 2, 75)
 
 
@@ -74,4 +86,7 @@ class ScoreBoardConfig:
 
     @classmethod
     def location(cls) -> tuple[int, int]:
+        """
+        Return a tuple (x, y) representing the position of the scoreboard. 
+        """
         return (0, ScreenConfig.HEIGHT // 2 - 35)
