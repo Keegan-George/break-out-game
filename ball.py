@@ -29,7 +29,7 @@ class Ball(Turtle):
 
     def bounce_x_paddle(self, paddle: Paddle):
         """
-        Reverse the direction of the ball based on where it makes contact with the paddle.
+        Reverse the ball x-trajectory based on where it made contact with the paddle.
         """
         x_dist = self.xcor() - paddle.xcor()
         self.x_move = x_dist * BallConfig.PADDLE_BOUNCE_FACTOR
@@ -57,7 +57,7 @@ class Ball(Turtle):
 
     def has_hit_other_object(self, object: Paddle | Brick) -> bool:
         """
-        Return True if the ball has collided with another object; paddle or brick. False otherwise.
+        Return True if the ball has collided with a brick or the paddle. False otherwise.
         """
         return (
             self.xcor() - self.radius < object.xcor() + object.length / 2
@@ -74,7 +74,7 @@ class Ball(Turtle):
 
     def reset(self) -> None:
         """
-        Reset the ball moving speed.
+        Reset the ball move distance and starting position.
         """
         self.x_move = BallConfig.MOVE_DISTANCE
         self.y_move = BallConfig.MOVE_DISTANCE
