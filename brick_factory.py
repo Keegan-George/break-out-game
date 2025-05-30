@@ -8,7 +8,7 @@ class BrickFactory:
 
     def generate_brick_wall(self) -> None:
         """
-        Generates the rows of bricks that form a brick wall.
+        Generates the rows of bricks that form the brick wall.
         """
         x_start, y_start = BrickFactoryConfig.starting_position()
         brick_width, brick_length = BrickConfig.brick_dimension()
